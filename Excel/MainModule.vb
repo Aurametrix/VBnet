@@ -1,4 +1,4 @@
-Module MainModule
+﻿Module MainModule
 
     Sub Main()
         Dim strSaveFilename, strTo, strFrom, strSMTPHost As String
@@ -26,4 +26,3 @@ Module MainModule
     End Sub
 
 End Module
-
