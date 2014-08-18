@@ -70,7 +70,7 @@ TmpNP(i).Ptr = Ptr_Pos
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 '  If byteindex(b).first isn't invalid then there is already a node chain attached to it, attached this one on the end.
 '  Otherwise attach the first node of the node chain.
-
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 If byteindex(b).First > -1 Then 
  ' Radix value has node chain attached to it
  ' so add a link to it by change Last node's next to point to this one
@@ -80,7 +80,61 @@ Else
  byteindex(b).First = i
 End If
 ' Pointer to last node of the radix value
-
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 '  Set the byteindex(b).last to i
 
 byteindex(b).Last = i
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'  Start at the byteindex(0) follow the node chains, Setting List_Post(K) to the TmpNP(Curr).ptr.
+'  Next bit looks complicated but all it is doing is follow the node chains.
+
+k = -1
+For j As Integer = 0 To 255 Step 1
+ 'Check to see if radix value has a node chain attached to it
+ If byteindex(j).First > -1 Then
+  ' Get first link in Node chain
+  Nxt = byteindex(j).First
+  Do
+   Curr = Nxt
+   k = k + 1
+   List_Pos(k) = TmpNP(Curr).Ptr
+   Nxt = TmpNP(Curr).NextPtr
+  Loop Until Nxt = -1
+ End If
+Next j
+
+'   Loop over the other string positions
+Next r
+
+'   At this stage TmpNP() contain enough information to work out the where each string goes when sort.
+'   Example:
+'   TmpNP(0).ptr Contains the index of the string in the first position.
+'   TmpNP(99).ptr Contains the index of the string in the hundredth position.
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'   Copy the strings in the correct position into a temporary array 
+
+Dim Temp_List(WordList.Count) As String
+For i As Integer = 0 To WordList.Count - 1
+ ' Set the TempList(i) to the word list at the indicate list position
+ Temp_List(i) = WordList(List_Pos(i))
+Next i
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'  Copy back into the original array
+
+' Move back into Wordlist
+ WordList.Clear()
+ WordList.AddRange(Temp_List)
+
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'  Order: O(n) <= 2MN + 256M + 2M
+'  Memory Footprint: 
+'  Byte Index Array = 256 * 2 * 4 bytes =>2048b / 2Kb
+'  Radix Sort = n * 2 * 4 bytes 
+'  List Positon = n * 4 bytes 
+
+'  This code can be extended to half word radix but the potential increase in execution speed is let down 
+'  by the code complexity;- odd & even length string, bigger memory footprint. 
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
