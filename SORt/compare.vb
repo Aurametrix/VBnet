@@ -6,3 +6,9 @@ Public Class myComparer : Implements IComparer
       Return 0
     End Function
 End Class
+
+  dim al as new ArrayList, comp as new myComparer
+  al.add("A")
+  al.add("B")
+  al.add("a")
+  al.sort(al,comp)
