@@ -48,3 +48,32 @@ To run this macro:
 2. Macros Button;
 
 3. Run
+
+
+To Avoid Receiving one of these messages:
+Not Enough Stack Space to Run Macro
+-or-
+Error 28: Out of Stack Space
+-or-
+Run-time error '28':
+Out of stack space
+
+when you call nested dialog boxes, do not assign a dialog control (such as a button or a check box) to a macro event that calls another dialog box. Instead, assign the control to first dismiss the active dialog box, then call the desired dialog box from the same the macro that called the first dialog box. To dismiss the active dialog box, do any of the following: 
+
+Format the control with the Dismiss property:
+
+Select the control and choose Object from Format menu.
+In the Format Object dialog box, select the Dismiss check box on the Control tab.
+-or-
+
+Assign the control to a macro that contains the following command:
+      ActiveDialog.Hide
+						
+-or-
+
+Format the control with the Cancel property:
+
+Select the control and choose Object from Format menu.
+In the Format Object dialog box, Select the Cancel check box on the Control tab.
+For an additional workaround, please see the following article(s) in the Microsoft Knowledge Base:
+125805 XL: Displaying Several Dialog Boxes Without Looping
