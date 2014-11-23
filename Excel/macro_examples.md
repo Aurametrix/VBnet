@@ -49,7 +49,21 @@ To run this macro:
 
 3. Run
 
+Hello world example:
 
+Tools...Macro...Visual Basic Editor  - same as [Alt][F11]
+
+In the Insert menu on top of the Visual Basic Editor, select Module to open the Module window (code window)
+
+Type In the Module window
+
+Sub showMessage()
+     MsgBox "Hello World!"
+End Sub
+
+Click the Run  button, press [F5], or go to Run..Run Sub/UserForm to run the program
+
+----
 To Avoid Receiving one of these messages:
 Not Enough Stack Space to Run Macro
 -or-
