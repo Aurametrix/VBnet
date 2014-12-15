@@ -1,0 +1,20 @@
+Plotly with Excel
+
+https://plot.ly/create-charts-in-excel-with-plotly/
+https://plot.ly/api/
+Free, scientific graphing in Excel: histograms, box-and-whisker plots, 3d charts, and more.
+
+General Tips:
+1. Talk to my eye, not to my brain: rely on proven types of visualization
+2. Less is more: suppress everything that’s not absolutely usefull for the understanding of a chart
+3. One chart = one takeaway: when looking at your chart, I should be able to infer your message in a snap
+4. Tell a story: build a directed sequence of messages
+
+#1. Start with deleting all the visual pollution
+#2. Color set : one vivid color, and grays. No more.
+#3. Optimize the x axis
+#4. Add Data Labels
+#5. Delete useless labels
+#6. Add direct labelling to your chart
+#7. Add an explicit takeaway to your chart
+#8. Remove frames and borders
