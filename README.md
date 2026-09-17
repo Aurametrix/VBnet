@@ -15,3 +15,5 @@ VB Keywords Compared to C# Keywords
 
 
 
+
+[Performance Improvements in .NET 11](https://devblogs.microsoft.com/dotnet/performance-improvements-in-net-11/)
